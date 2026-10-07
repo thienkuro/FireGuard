@@ -1,17 +1,33 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-require("dotenv").config();
+require("./services/mqttService");
+require("./services/deviceMonitorService");
 
 const sequelize = require("./config/database");
-const Area = require("./models/Area");
-const Device = require("./models/Device");
-const DeviceStatus = require("./models/DeviceStatus");
-const SensorHistory = require("./models/SensorHistory");
+const models = require("./models");
+const authRoutes = require("./routes/authRoutes");
+const deviceRoutes = require("./routes/deviceRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
+const alertRoutes = require("./routes/alertRoutes");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/dashboard", dashboardRoutes);
+
+app.use("/api/auth", authRoutes);
+app.use("/api/devices", deviceRoutes);
+app.use("/api/notifications", notificationRoutes);
+app.use("/api/alerts", alertRoutes);
+
+
+
+console.log("Auth routes registered");
+console.log("Running file:", __filename);
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
@@ -25,18 +41,8 @@ app.get("/", (req, res) => {
 sequelize.authenticate()
     .then(async () => {
         console.log("Connected to MySQL");
-        const areas = await Area.findAll();
 
-console.table(areas.map(area => area.toJSON()));
 
-const devices = await Device.findAll();
-console.table(devices.map(device => device.toJSON()));
-
-const devicesStatus = await DeviceStatus.findAll();
-console.table(devicesStatus.map(status => status.toJSON()));
-
-const sensorHistory = await SensorHistory.findAll();
-console.table(sensorHistory.map(history => history.toJSON()));
 
     })
     .catch((error) => {
@@ -46,6 +52,21 @@ console.table(sensorHistory.map(history => history.toJSON()));
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
+app.post("/abc", (req, res) => {
+    res.json({
+        success: true,
+        message: "ABC OK"
+    });
+});
+
+const http = require("http");
+const socket = require("./sockets/socket");
+
+const server = http.createServer(app);
+
+// Khởi tạo Socket.IO
+socket.initialize(server);
+
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

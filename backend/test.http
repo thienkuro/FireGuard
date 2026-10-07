@@ -1,0 +1,55 @@
+# GET http://localhost:3000/api/devices/1/history
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV9pZCI6MSwiaWF0IjoxNzg1MzQ3NjEyLCJleHAiOjE3ODU0MzQwMTJ9.R7NeytxZhP7IwL2XMkkjoT8vYGZb9GrCvBUQCfN5S8E
+
+
+
+# POST http://localhost:3000/api/devices/1/commands
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV9pZCI6MSwiaWF0IjoxNzg1MzQ3NzQ3LCJleHAiOjE3ODU0MzQxNDd9.eAlZvwQhqypqAP55UcYo6jFVaadXsCiXl4E1P0t6j_M
+# Content-Type: application/json
+
+# {
+#     "command":"FAN",
+#     "value":"ON"
+# }
+
+
+# POST http://localhost:3000/api/devices/1/commands
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV9pZCI6MSwiaWF0IjoxNzg1ODI4ODMzLCJleHAiOjE3ODU5MTUyMzN9.TqEPK-YaK6PACQV7CXt8WeNA1RT7_eicjOeod2JGrGQ
+# Content-Type: application/json
+
+# {
+#     "command": "FAN",
+#     "value": false
+# }
+
+
+# GET http://localhost:3000/api/dashboard
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV9pZCI6MSwiaWF0IjoxNzg2MjU5MzA5LCJleHAiOjE3ODYzNDU3MDl9.GyB_QaScJ8yNKCH1ljFctgcBgj74tzP5gK7sA3OvQGY
+
+
+
+# POST http://localhost:3000/api/auth/login
+# Content-Type: application/json
+
+# {
+#     "username": "admin",
+#     "password": "admin123"
+# }
+
+# POST http://localhost:3000/api/notifications/token
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV9pZCI6MSwiaWF0IjoxNzg2MjU5MzA5LCJleHAiOjE3ODYzNDU3MDl9.GyB_QaScJ8yNKCH1ljFctgcBgj74tzP5gK7sA3OvQGY
+
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV9pZCI6MSwiaWF0IjoxNzg2MDY4MzM2LCJleHAiOjE3ODYxNTQ3MzZ9.lfslVVkw9IGc3y83NOv_S2o3Ewff0CEoPSJ7tKs9FB4
+# Content-Type: application/json
+
+# {
+#     "command": "FAN",
+#     "value": false
+# }
+
+
+
+POST http://localhost:3000/api/notifications/test-alert
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwicm9sZV9pZCI6MSwiaWF0IjoxNzg2Mjc2NTYwLCJleHAiOjE3ODYzNjI5NjB9.SdaI3UBzFG_jJ6_dTE3Bi2rinW3Y7p6SBN1JeoCL1cs
